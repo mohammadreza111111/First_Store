@@ -14,7 +14,7 @@ namespace First_Store.Application.Services.Users.Queries.GetUsers
 
   public class GetUsersService : IGetUsersService
     {
-        private readonly IDataBaseContext _context;
+          private readonly IDataBaseContext _context;
         public GetUsersService(IDataBaseContext context)
         {
             _context = context;
