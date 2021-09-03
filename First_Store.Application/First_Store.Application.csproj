@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\First_Store.Common\First_Store.Common.csproj" />
     <ProjectReference Include="..\First_Store.Domain\First_Store.Domain.csproj" />
   </ItemGroup>
 
