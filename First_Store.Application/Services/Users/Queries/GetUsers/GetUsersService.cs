@@ -13,7 +13,7 @@ namespace First_Store.Application.Services.Users.Queries.GetUsers
         {
             _context = context;
         }
-        public List<GetUsersDto> Execute(RequestGetUserDto requestGetUserDto)
+        public ResultGetUserDto Execute(RequestGetUserDto requestGetUserDto)
         {
             var users = _context.Users.AsQueryable();
 
@@ -23,7 +23,8 @@ namespace First_Store.Application.Services.Users.Queries.GetUsers
             }
 
             int rowsCount = 0;
-            return users.ToPaged(requestGetUserDto.Page, 20, out rowsCount).Select(p => new GetUsersDto { Email = p.Email, FullName = p.FullName, Id = p.Id }).ToList();
+            var UsersList= users.ToPaged(requestGetUserDto.Page, 20, out rowsCount).Select(p => new GetUsersDto { Email = p.Email, FullName = p.FullName, Id = p.Id }).ToList();
+            return new ResultGetUserDto { Rows = rowsCount, Users = UsersList };
         }
     }
 }

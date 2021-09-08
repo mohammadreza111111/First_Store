@@ -1,4 +1,5 @@
 using First_Store.Application.Interfaces.Context;
+using First_Store.Application.Services.Users.Queries.GetUsers;
 using First_Store.persistence.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +28,7 @@ namespace EndPoint.Site
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IDataBaseContext, DataBaseContext>();
+            services.AddScoped<IGetUsersService, GetUsersService>();
 
             string Connection_String="Data Source=.\\SQl2019;Initial Catalog=First_StoreDB;Integrated Security=True;";
             services.AddEntityFrameworkSqlServer().AddDbContext<DataBaseContext>(option => option.UseSqlServer(Connection_String));
